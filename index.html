@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Nana ❤️</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(#0f0c29,#302b63,#24243e);
+  color:white;
+  overflow-x:hidden;
+}
+
+section{
+  min-height:100vh;
+  padding:80px 20px;
+  text-align:center;
+}
+
+h1{font-size:56px;color:#ffb6c1}
+h2{font-size:42px;color:#ffd6e0}
+p{font-size:26px;line-height:1.7}
+
+/* Falling hearts */
+.heart{
+  position:fixed;
+  top:-10px;
+  font-size:26px;
+  animation:fall linear infinite;
+}
+@keyframes fall{
+  to{transform:translateY(120vh);opacity:0}
+}
+
+/* Kisses */
+.kiss{
+  position:fixed;
+  bottom:0;
+  font-size:34px;
+  animation:floatUp 4s linear;
+}
+@keyframes floatUp{
+  to{transform:translateY(-120vh);opacity:0}
+}
+
+/* Slideshow */
+.slideshow{
+  position:relative;
+  width:320px;
+  height:420px;
+  margin:40px auto;
+  border-radius:25px;
+  overflow:hidden;
+  box-shadow:0 0 60px rgba(255,105,180,0.9);
+  background:black;
+  opacity:0;
+  transform:scale(0.85);
+}
+
+.slideshow.reveal{
+  opacity:1;
+  transform:scale(1);
+  transition:opacity 2s ease, transform 2s ease;
+}
+
+.slide{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transform:scale(1.1);
+  transition:opacity 2s ease, transform 6s ease;
+}
+.slide.active{
+  opacity:1;
+  transform:scale(1);
+}
+
+/* Buttons */
+button{
+  padding:18px 50px;
+  font-size:26px;
+  border:none;
+  border-radius:40px;
+  background:linear-gradient(45deg,#ff4d6d,#ff85a2);
+  color:white;
+  cursor:pointer;
+  margin:10px;
+}
+.yes{background:#ff1493;color:white}
+.no{background:#555;color:white}
+
+#sad{
+  display:none;
+  font-size:2em;
+  color:#aaa;
+}
+
+/* YES animation */
+.yes-ring{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) scale(0);
+  font-size:120px;
+  animation:ringPop 2s ease forwards;
+  z-index:9999;
+}
+@keyframes ringPop{
+  0%{transform:translate(-50%,-50%) scale(0)}
+  50%{transform:translate(-50%,-50%) scale(1.4)}
+  100%{transform:translate(-50%,-50%) scale(1)}
+}
+
+.yes-text{
+  position:fixed;
+  top:65%;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:38px;
+  color:#ffb6c1;
+  animation:fadeUp 2s ease forwards;
+  z-index:9999;
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translate(-50%,20px)}
+  to{opacity:1;transform:translate(-50%,0)}
+}
+
+
+/* Secret */
+#secret{display:none;background:black}
+.stars{
+  position:fixed;
+  inset:0;
+  background:radial-gradient(white 1px,transparent 1px);
+  background-size:40px 40px;
+  opacity:.3;
+}
+.ring{
+  font-size:90px;
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.3)}
+  100%{transform:scale(1)}
+}
+
+input{
+  padding:15px;
+  font-size:22px;
+  border-radius:10px;
+  border:none;
+}
+audio{
+  width:90%;
+  max-width:420px;
+  margin-top:20px;
+}
+
+/* Fireworks */
+canvas{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+}
+</style>
+</head>
+
+<body onclick="startMusic()">
+
+<audio id="bgm" loop>
+  <source src="music.mpeg" type="audio/mpeg">
+</audio>
+
+<script>
+let started=false;
+function startMusic(){
+  if(!started){
+    document.getElementById("bgm").play();
+    started=true;
+  }
+}
+</script>
+
+<script>
+setInterval(()=>{
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(Math.random()*3+4)+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),7000);
+},300);
+</script>
+
+<section>
+  <h1>Happy Birthday Nana 🎂❤️</h1>
+  <p>This is not a website…</p>
+  <p>It’s my heart beating for you ❤️</p>
+</section>
+
+<section>
+  <h2>Listen to Me 🎧</h2>
+  <p>Close your eyes… feel my love.</p>
+  <audio controls>
+    <source src="voice-note.mpeg" type="audio/mpeg">
+  </audio>
+</section>
+
+<section>
+  <h2>My Truth 💌</h2>
+  <p>I don’t promise perfection, Nana.</p>
+  <p>I promise effort.</p>
+  <p>I promise presence.</p>
+  <p>I promise loyalty.</p>
+  <p>I promise honesty.</p>
+  <p>I promise growth together.</p>
+  <p>You’ll never see me running to others.</p>
+  <p>I choose you.</p>
+  <p>Again. And again. And again. 🫂</p>
+</section>
+
+<section>
+  <h2>Our Memories 📸</h2>
+  <div class="slideshow">
+    <img src="photo1.jpeg" class="slide active">
+    <img src="photo2.jpeg" class="slide">
+    <img src="photo3.jpeg" class="slide">
+    <img src="photo4.jpeg" class="slide">
+    <img src="photo5.jpeg" class="slide">
+    <img src="photo6.jpeg" class="slide">
+    <img src="photo7.jpeg" class="slide">
+    <img src="photo8.jpeg" class="slide">
+    <img src="photo9.jpeg" class="slide">
+    <img src="photo10.jpeg" class="slide">
+    <img src="photo11.jpeg" class="slide">
+    <img src="photo12.jpeg" class="slide">
+    <img src="photo13.jpeg" class="slide">
+  </div>
+</section>
+
+<section>
+  <h2>Nana 🙈</h2>
+  <p>Will You Marry Me? 💍</p>
+  <button class="yes" onclick="yes()">YES ❤️</button>
+  <button class="no" onclick="no()">NO 🥺</button>
+  <p id="sad">My heart still waits… 🥺💔</p>
+</section>
+
+<section id="lock">
+  <h2>Final Surprise 🔐</h2>
+  <p>Only you can unlock this.</p>
+  <input type="password" id="code" placeholder="****">
+  <br><br>
+  <button onclick="unlock()">Unlock</button>
+</section>
+
+<section id="secret">
+  <div class="stars"></div>
+  <canvas id="fireworks"></canvas>
+
+  <h1>NANA</h1>
+  <div class="ring">💍</div>
+
+   <p>
+    This is not romance.<br>
+    This is commitment.✨
+  </p>
+
+  <p>
+    I want mornings with you.<br>
+    Problems with you.<br>
+    A life where we stand together.💝
+  </p>
+
+  <p>
+    When the world gets heavy,<br>
+    I will be your peace.🫂
+  </p>
+
+  <p>
+    When life hits you hard… <br>
+    I’ll stand beside you.  <br>
+    Not behind,  
+    Not ahead.<br>  
+    Beside.💖
+  </p>
+
+  <p>
+    I don’t want moments.<br> 
+    I want years. <br> 
+    I want mornings. <br> 
+    I want responsibility.💘
+  </p>
+
+
+  <audio autoplay controls>
+    <source src="voice-note.mpeg" type="audio/mpeg">
+  </audio>
+
+  <p style="margin-top:40px">
+    If anyone ever asks who chose you<br>
+    without conditions…<br>
+    It will always be me.🥰
+  </p>
+
+</section>
+
+<script>
+/* slideshow */
+let slides=document.querySelectorAll(".slide");
+let idx=0;
+setInterval(()=>{
+  slides[idx].classList.remove("active");
+  idx=(idx+1)%slides.length;
+  slides[idx].classList.add("active");
+},4000);
+
+/* reveal slideshow */
+const slideshow=document.querySelector(".slideshow");
+const obs=new IntersectionObserver(e=>{
+  if(e[0].isIntersecting)slideshow.classList.add("reveal");
+},{threshold:0.4});
+obs.observe(slideshow);
+
+/* YES animation */
+function yes(){
+  for(let i=0;i<40;i++){
+    let k=document.createElement("div");
+    k.className="kiss";
+    k.innerHTML="😘";
+    k.style.left=Math.random()*100+"vw";
+    document.body.appendChild(k);
+    setTimeout(()=>k.remove(),4000);
+  }
+
+  let ring=document.createElement("div");
+  ring.className="yes-ring";
+  ring.innerHTML="💍";
+  document.body.appendChild(ring);
+
+  let txt=document.createElement("div");
+  txt.className="yes-text";
+  txt.innerHTML="He said YES ❤️";
+  document.body.appendChild(txt);
+
+  setTimeout(()=>{
+    ring.remove();
+    txt.remove();
+    document.getElementById("lock")
+      .scrollIntoView({behavior:"smooth"});
+  },2500);
+}
+
+
+/* NO */
+function no(){
+  document.getElementById("sad").style.display="block";
+}
+
+/* unlock */
+function unlock(){
+  if(document.getElementById("code").value==="1807"){
+    document.getElementById("bgm").pause();
+    document.getElementById("secret").style.display="block";
+    document.getElementById("secret")
+      .scrollIntoView({behavior:"smooth"});
+    startFireworks();
+  }else{
+    alert("Wrong code ra Eddi 😁");
+  }
+}
+
+/* fireworks */
+function startFireworks(){
+  const c=document.getElementById("fireworks");
+  const ctx=c.getContext("2d");
+  c.width=innerWidth;
+  c.height=innerHeight;
+  let particles=[];
+  function boom(){
+    let x=Math.random()*c.width;
+    let y=Math.random()*c.height/2;
+    for(let i=0;i<80;i++){
+      particles.push({
+        x,y,
+        vx:(Math.random()-0.5)*6,
+        vy:(Math.random()-0.5)*6,
+        life:100
+      });
+    }
+  }
+  setInterval(boom,900);
+  function animate(){
+    ctx.clearRect(0,0,c.width,c.height);
+    particles.forEach((p,i)=>{
+      p.x+=p.vx;
+      p.y+=p.vy;
+      p.life--;
+      ctx.fillStyle="hsl("+Math.random()*360+",100%,60%)";
+      ctx.fillRect(p.x,p.y,3,3);
+      if(p.life<=0)particles.splice(i,1);
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+}
+</script>
+
+</body>
+</html>
